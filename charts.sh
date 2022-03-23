@@ -26,13 +26,18 @@ if [[ $1 = "package" ]]; then
   cr package charts/istio/istio-control/istio-discovery/
   cr package charts/istio/istio-operator/
   cr package charts/istio/istiod-remote/
+
+  cr package charts/istio-monitoring/elastic-stack
+  cr package charts/istio-monitoring/grafana-stack
+  cr package charts/istio-monitoring/kiali-stack
+
   exit 0
 fi
 
 if [[ $1 = "upload" ]]; then
   echo "What is your github token? "
   read -r GITHUB_TOKEN
-  cr upload --owner ${OWNER} --git-repo ${GITHUB_REPO} --token ${GITHUB_TOKEN}
+  cr upload --owner ${OWNER} --git-repo ${GITHUB_REPO} --token ${GITHUB_TOKEN} --skip-existing
   exit 0
 fi
 
@@ -44,5 +49,18 @@ if [[ $1 = "index" ]]; then
   exit 0
 fi
 
-echo "please specify action ./charts.sh package/upload/index"
+if [[ $1 = "repos" ]]; then
+  helm repo add elastic https://helm.elastic.co
+  helm repo add fluent https://fluent.github.io/helm-charts
+  helm repo add grafana https://grafana.github.io/helm-charts
+  helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
+  helm repo add kiali https://kiali.org/helm-charts
+  helm repo add kube-state-metrics https://kubernetes.github.io/kube-state-metrics
+  helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
+  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+  helm repo update
+  exit 0
+fi
+
+echo "please specify action ./charts.sh package/upload/index/repos"
 exit 1

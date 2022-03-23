@@ -35,6 +35,8 @@ istio/base              1.1.0                           Helm chart for deploying
 
 This is a list of available charts.
 
+#### Istio Core Charts
+
 |Chart|Release|Docs|Values|Description|
 |-----|-------|----|------|-----------|
 |base|[1.1.0](https://github.com/boeboe/istio-helm-charts/releases/tag/base-1.1.0)|[doc](charts/istio/base/NOTES.txt)|[yaml](charts/istio/base/values.yaml)|Helm chart for deploying Istio cluster resources and CRDs|
@@ -44,6 +46,12 @@ This is a list of available charts.
 |istio-ingress|[1.1.0](https://github.com/boeboe/istio-helm-charts/releases/tag/istio-ingress-1.1.0)|[doc](charts/istio/gateways/istio-ingress/NOTES.txt)|[yaml](charts/istio//gateways/istio-ingress/values.yaml)|Helm chart for deploying Istio ingress gateways|
 |istio-operator|[1.7.0](https://github.com/boeboe/istio-helm-charts/releases/tag/istio-operator-1.7.0)|[doc](charts/istio/istio-operator/NOTES.txt)|[yaml](charts/istio/istio-operator/values.yaml)|Helm chart for deploying Istio operator|
 |istiod-remote|[1.2.0](https://github.com/boeboe/istio-helm-charts/releases/tag/istiod-remote-1.2.0)|[doc](charts/istio/istiod-remote/NOTES.txt)|[yaml](charts/istio/istiod-remote/values.yaml)|Helm chart for a remote cluster using an external istio control plane|
+
+#### Istio Monitoring Stack Charts
+
+|elastic-stack|[1.0.0](https://github.com/boeboe/istio-helm-charts/releases/tag/elastic-stack-1.0.0)|[doc](charts/istio-monitoring/elastic-stack/README.md)|[yaml](charts/istio-monitoring/elastic-stack/values.yaml)|Istio Monitoring with Elastic Search, Kibana, APM Server and Filebeat|
+|grafana-stack|[1.0.0](https://github.com/boeboe/istio-helm-charts/releases/tag/grafana-stack-1.0.0)|[doc](charts/istio-monitoring/grafana-stack/README.md)|[yaml](charts/istio-monitoring/grafana-stack/values.yaml)|Istio Monitoring with Kiali, Grafana, Prometheus and Jaeger|
+|kiali-stack|[1.0.0](https://github.com/boeboe/istio-helm-charts/releases/tag/kiali-stack-1.0.0)|[doc](charts/istio-monitoring/kiali-stack/README.md)|[yaml](charts/istio-monitoring/kiali-stack/values.yaml)|Istio Monitoring with Prometheus, Grafana, Tempo, Loki and FluentBit|
 
 ## License
 

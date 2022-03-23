@@ -14,6 +14,90 @@ entries:
     urls:
     - https://github.com/boeboe/istio-helm-charts/releases/download/base-1.1.0/base-1.1.0.tgz
     version: 1.1.0
+  elastic-stack:
+  - apiVersion: v2
+    created: "2022-03-23T18:46:41.716331813+01:00"
+    dependencies:
+    - condition: elasticsearch.enabled
+      name: elasticsearch
+      repository: https://helm.elastic.co
+      version: 7.15.0
+    - condition: kibana.enabled
+      name: kibana
+      repository: https://helm.elastic.co
+      version: 7.15.0
+    - condition: apm-server.enabled
+      name: apm-server
+      repository: https://helm.elastic.co
+      version: 7.15.0
+    - condition: filebeat.enabled
+      name: filebeat
+      repository: https://helm.elastic.co
+      version: 7.15.0
+    - condition: metricbeat.enabled
+      name: metricbeat
+      repository: https://helm.elastic.co
+      version: 7.15.0
+    - condition: logstash.enabled
+      name: logstash
+      repository: https://helm.elastic.co
+      version: 7.15.0
+    - condition: opentelemetry-collector.enabled
+      name: opentelemetry-collector
+      repository: https://open-telemetry.github.io/opentelemetry-helm-charts
+      version: 0.6.0
+    description: A Helm chart for Istio Monitoring with Elastic Search, Kibana, APM
+      Server and Filebeat
+    digest: 98aee4e9998eefdbae0ee8cd70042a086b5e264f26bcf1679cea975ad1417c38
+    home: https://boeboe.github.io/istio-helm-charts
+    maintainers:
+    - email: bartvanbos@gmail.com
+      name: Bart Van Bos
+    name: elastic-stack
+    sources:
+    - https://github.com/boeboe/istio-helm-charts
+    type: application
+    urls:
+    - https://github.com/boeboe/istio-helm-charts/releases/download/elastic-stack-1.0.0/elastic-stack-1.0.0.tgz
+    version: 1.0.0
+  grafana-stack:
+  - apiVersion: v2
+    created: "2022-03-23T18:46:42.009420742+01:00"
+    dependencies:
+    - condition: prometheus.enabled
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 14.9.1
+    - condition: grafana.enabled
+      name: grafana
+      repository: https://grafana.github.io/helm-charts
+      version: 6.16.13
+    - condition: loki.enabled
+      name: loki
+      repository: https://grafana.github.io/helm-charts
+      version: 2.6.0
+    - condition: tempo.enabled
+      name: tempo
+      repository: https://grafana.github.io/helm-charts
+      version: 0.7.7
+    - condition: fluent-bit.enabled
+      name: fluent-bit
+      repository: https://fluent.github.io/helm-charts
+      version: 0.19.1
+    description: A Helm chart for Istio Monitoring with Prometheus, Grafana, Tempo,
+      Loki and FluentBit
+    digest: 00b7c3468e967024f471bf0381a88d4f42068ac992ede10ffbb9654acd74d8b4
+    home: https://boeboe.github.io/istio-helm-charts
+    maintainers:
+    - email: bartvanbos@gmail.com
+      name: Bart Van Bos
+    name: grafana-stack
+    sources:
+    - https://github.com/boeboe/istio-helm-charts
+    type: application
+    urls:
+    - https://github.com/boeboe/istio-helm-charts/releases/download/grafana-stack-1.0.0/grafana-stack-1.0.0.tgz
+    version: 1.0.0
   istio-cni:
   - apiVersion: v1
     created: "2022-03-23T17:31:13.977539493+01:00"
@@ -107,4 +191,38 @@ entries:
     urls:
     - https://github.com/boeboe/istio-helm-charts/releases/download/istiod-remote-1.2.0/istiod-remote-1.2.0.tgz
     version: 1.2.0
-generated: "2022-03-23T17:31:14.889679346+01:00"
+  kiali-stack:
+  - apiVersion: v2
+    created: "2022-03-23T18:46:43.355849592+01:00"
+    dependencies:
+    - condition: prometheus.enabled
+      name: prometheus
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 14.9.1
+    - condition: grafana.enabled
+      name: grafana
+      repository: https://grafana.github.io/helm-charts
+      version: 6.16.13
+    - condition: jaeger.enabled
+      name: jaeger
+      repository: https://jaegertracing.github.io/helm-charts
+      version: 0.47.0
+    - condition: kiali-server.enabled
+      name: kiali-server
+      repository: https://kiali.org/helm-charts
+      version: v1.41.0
+    description: A Helm chart for Istio Monitoring with Kiali, Grafana, Prometheus
+      and Jaeger
+    digest: af8f2bbe21eff77ca1002bfb88707aafcff693efaed3fd4503a91ed0e5c726ad
+    home: https://boeboe.github.io/istio-helm-charts
+    maintainers:
+    - email: bartvanbos@gmail.com
+      name: Bart Van Bos
+    name: kiali-stack
+    sources:
+    - https://github.com/boeboe/istio-helm-charts
+    type: application
+    urls:
+    - https://github.com/boeboe/istio-helm-charts/releases/download/kiali-stack-1.0.0/kiali-stack-1.0.0.tgz
+    version: 1.0.0
+generated: "2022-03-23T18:46:43.355859227+01:00"

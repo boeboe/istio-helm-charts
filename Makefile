@@ -17,3 +17,6 @@ upload: ## Upload Helm chart packages to GitHub Release
 
 index: ## Update Helm repo index.yaml for the given GitHub repo
 	./charts.sh index
+
+repos: ## Install depending Helm repos
+	./charts.sh repos
