@@ -1,0 +1,184 @@
+# https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml
+prometheus:
+  enabled: true
+  fullnameOverride: prometheus
+  alertmanager:
+    fullnameOverride: prometheus-alertmanager
+  kubeStateMetrics:
+    enabled: true
+  kube-state-metrics:
+    fullnameOverride: kube-state-metrics
+  nodeExporter:
+    fullnameOverride: prometheus-node-exporter
+  pushgateway:
+    fullnameOverride: prometheus-pushgateway
+    enabled: false
+  server:
+    fullnameOverride: prometheus
+    service:
+      type: LoadBalancer 
+
+
+# https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
+grafana:
+  enabled: true
+  fullnameOverride: grafana
+
+  adminUser: admin
+  adminPassword: istio
+  dashboards:
+    default:
+      kubernetes-cluster:
+        gnetId: 7249
+        revision: 1
+        datasource: Prometheus
+      node-exporter:
+        gnetId: 1860
+        revision: 23
+        datasource: Prometheus
+      kubernetes-cluster-monitoring-prometheus:
+        gnetId: 1621
+        datasource: Prometheus
+      prometheus-stats:
+        gnetId: 2
+        revision: 2
+        datasource: Prometheus
+      istio-mesh:
+        gnetId: 7639
+        revision: 92
+        datasource: Prometheus
+      istio-service:
+        gnetId: 7636
+        revision: 92
+        datasource: Prometheus
+      istio-workload:
+        gnetId: 7630
+        revision: 92
+        datasource: Prometheus
+      istio-performance:
+        gnetId: 11829
+        revision: 92
+        datasource: Prometheus
+      istio-controlplane:
+        gnetId: 7645
+        revision: 92
+        datasource: Prometheus
+      istio-loki:
+        gnetId: 14876
+        revision: 2
+        datasource: Loki
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+        - name: default
+          orgId: 1
+          folder: ""
+          type: file
+          disableDeletion: false
+          editable: false
+          options:
+            path: /var/lib/grafana/dashboards/default
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+        - name: Loki
+          type: loki
+          url: http://loki:3100
+          access: proxy
+          orgId: 1
+          uid: loki
+          jsonData:
+            derivedFields:
+              - datasourceName: Tempo
+                matcherRegex: '"trace_id":"(\w+)"'
+                name: TraceID
+                url: "$${__value.raw}"
+                datasourceUid: tempo
+          isDefault: false
+        - name: Prometheus
+          type: prometheus
+          url: http://prometheus:80
+          access: proxy
+          orgId: 1
+          uid: prometheus
+          isDefault: true
+        - name: Tempo
+          type: tempo
+          url: http://tempo:3100
+          access: proxy
+          orgId: 1
+          uid: tempo
+          isDefault: false
+  persistence:
+    enabled: true
+  service:
+    type: LoadBalancer
+
+
+# https://github.com/grafana/helm-charts/blob/main/charts/loki/values.yaml
+loki:
+  enabled: true
+  fullnameOverride: loki
+  persistence:
+    enabled: true
+  service:
+    type: LoadBalancer
+
+
+# https://github.com/grafana/helm-charts/blob/main/charts/tempo/values.yaml
+tempo:
+  enabled: true
+  fullnameOverride: tempo
+  persistence:
+    enabled: true
+  tempo:
+    extraArgs:
+      "distributor.log-received-traces": true
+    receivers:
+      zipkin:
+      otlp:
+        protocols:
+          http:
+          grpc:
+
+
+# https://github.com/fluent/helm-charts/blob/main/charts/fluent-bit/values.yaml
+fluent-bit:
+  enabled: true
+  fullnameOverride: fluent-bit
+  logLevel: trace
+  config:
+    service: |
+      [SERVICE]
+          Flush         1
+          Daemon        Off
+          Log_Level     trace
+          Parsers_File  custom_parsers.conf
+          HTTP_Server   On
+          HTTP_Listen   0.0.0.0
+          HTTP_Port     2020
+    inputs: |
+      [INPUT]
+          Name          tail
+          Path          /var/log/containers/*istio-proxy*.log
+          Parser        istio-proxy
+          Tag           kube.*
+          Mem_Buf_Limit 5MB
+    outputs: |
+      [OUTPUT]
+          name                    loki
+          match                   *
+          host                    loki
+          port                    3100
+          tenant_id               ""
+          labels                  job=fluentbit
+          label_keys              $trace_id
+          auto_kubernetes_labels  on
+    customParsers: |
+      [PARSER]
+          Name          istio-proxy
+          Format        json
+          Time_Key      start_time
+          Time_Format   %Y-%m-%dT%H:%M:%S.%L%z

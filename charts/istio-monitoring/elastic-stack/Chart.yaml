@@ -1,0 +1,42 @@
+apiVersion: v2
+name: elastic-stack
+description: A Helm chart for Istio Monitoring with Elastic Search, Kibana, APM Server and Filebeat
+type: application
+version: 1.0.0
+
+home: https://boeboe.github.io/istio-helm-charts
+sources:
+- https://github.com/boeboe/istio-helm-charts
+maintainers:
+- name: Bart Van Bos
+  email: bartvanbos@gmail.com
+
+dependencies:
+- name: elasticsearch
+  condition: elasticsearch.enabled
+  version: "7.15.0"
+  repository: "https://helm.elastic.co"
+- name: kibana
+  condition: kibana.enabled
+  version: "7.15.0"
+  repository: "https://helm.elastic.co"
+- name: apm-server
+  condition: apm-server.enabled
+  version: "7.15.0"
+  repository: "https://helm.elastic.co"
+- name: filebeat
+  condition: filebeat.enabled
+  version: "7.15.0"
+  repository: "https://helm.elastic.co"
+- name: metricbeat
+  condition: metricbeat.enabled
+  version: "7.15.0"
+  repository: "https://helm.elastic.co"
+- name: logstash
+  condition: logstash.enabled
+  version: "7.15.0"
+  repository: "https://helm.elastic.co"
+- name: opentelemetry-collector
+  condition: opentelemetry-collector.enabled
+  version: "0.6.0"
+  repository: "https://open-telemetry.github.io/opentelemetry-helm-charts"
