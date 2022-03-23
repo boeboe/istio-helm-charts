@@ -22,15 +22,15 @@ You can then run `helm search repo istio` to see the charts.
 
 This is a list of available charts.
 
-|Chart|Release|Docs|Description|
-|-----|-------|----|-----------|
-|base|[1.1.0](https://github.com/boeboe/istio-helm-charts/releases/tag/base-1.1.0)|[doc](charts/istio/base/NOTES.txt)|Istio Base Chart with the CRDs|
-|istio-cni|[1.1.0](https://github.com/boeboe/istio-helm-charts/releases/tag/istio-cni-1.1.0)|[doc](charts/istio/istio-cni/NOTES.txt)|Istio CNI Chart|
-|istio-discovery|[1.2.0](https://github.com/boeboe/istio-helm-charts/releases/tag/istio-discovery-1.2.0)|[doc](charts/istio/istio-control/istio-discovery/NOTES.txt)|Istio Control Chart|
-|istio-egress|[1.1.0](https://github.com/boeboe/istio-helm-charts/releases/tag/istio-egress-1.1.0)|[doc](charts/istio/gateways/istio-egress/NOTES.txt)|Istio Gateway Egress Chart|
-|istio-ingress|[1.1.0](https://github.com/boeboe/istio-helm-charts/releases/tag/istio-ingress-1.1.0)|[doc](charts/istio/gateways/istio-ingress/NOTES.txt)|Istio Gateway Ingress Chart|
-|istio-operator|[1.7.0](https://github.com/boeboe/istio-helm-charts/releases/tag/istio-operator-1.7.0)|[doc](charts/istio/istio-operator/NOTES.txt)|Istio Operator Chart|
-|istiod-remote|[1.2.0](https://github.com/boeboe/istio-helm-charts/releases/tag/istiod-remote-1.2.0)|[doc](charts/istio/istiod-remote/NOTES.txt)|Istiod Remote Chart|
+|Chart|Release|Docs|Values|Description|
+|-----|-------|----|------|-----------|
+|base|[1.1.0](https://github.com/boeboe/istio-helm-charts/releases/tag/base-1.1.0)|[doc](charts/istio/base/NOTES.txt)|[values](charts/istio/base/values.yaml)|Istio Base Chart with the CRDs|
+|istio-cni|[1.1.0](https://github.com/boeboe/istio-helm-charts/releases/tag/istio-cni-1.1.0)|[doc](charts/istio/istio-cni/NOTES.txt)|[values](charts/istio/istio-cni/values.yaml)|Istio CNI Chart|
+|istio-discovery|[1.2.0](https://github.com/boeboe/istio-helm-charts/releases/tag/istio-discovery-1.2.0)|[doc](charts/istio/istio-control/istio-discovery/NOTES.txt)|[values](charts/istio/istio-control/istio-discovery/values.yaml)|Istio Control Chart|
+|istio-egress|[1.1.0](https://github.com/boeboe/istio-helm-charts/releases/tag/istio-egress-1.1.0)|[doc](charts/istio/gateways/istio-egress/NOTES.txt)|[values](charts/istio//gateways/istio-egress/values.yaml)|Istio Gateway Egress Chart|
+|istio-ingress|[1.1.0](https://github.com/boeboe/istio-helm-charts/releases/tag/istio-ingress-1.1.0)|[doc](charts/istio/gateways/istio-ingress/NOTES.txt)|[values](charts/istio//gateways/istio-ingress/values.yaml)|Istio Gateway Ingress Chart|
+|istio-operator|[1.7.0](https://github.com/boeboe/istio-helm-charts/releases/tag/istio-operator-1.7.0)|[doc](charts/istio/istio-operator/NOTES.txt)|[values](charts/istio/istio-operator/values.yaml)|Istio Operator Chart|
+|istiod-remote|[1.2.0](https://github.com/boeboe/istio-helm-charts/releases/tag/istiod-remote-1.2.0)|[doc](charts/istio/istiod-remote/NOTES.txt)|[values](charts/istio/istiod-remote/values.yaml)|Istiod Remote Chart|
 
 ## License
 
