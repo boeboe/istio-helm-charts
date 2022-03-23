@@ -18,6 +18,18 @@ helm repo add istio https://boeboe.github.io/istio-helm-charts
 
 You can then run `helm search repo istio` to see the charts.
 
+```console
+helm search repo istio
+NAME                    CHART VERSION   APP VERSION     DESCRIPTION                                       
+istio/istio-cni         1.1.0                           Helm chart for istio-cni components               
+istio/istio-discovery   1.2.0                           Helm chart for istio control plane                
+istio/istio-egress      1.1.0                           Helm chart for deploying Istio gateways           
+istio/istio-ingress     1.1.0                           Helm chart for deploying Istio gateways           
+istio/istio-operator    1.7.0                           Helm chart for deploying Istio operator           
+istio/istiod-remote     1.2.0                           Helm chart for a remote cluster using an extern...
+istio/base              1.1.0                           Helm chart for deploying Istio cluster resource...
+```
+
 ### Charts
 
 This is a list of available charts.
