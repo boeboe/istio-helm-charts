@@ -49,6 +49,8 @@ This is a list of available charts.
 
 #### Istio Monitoring Stack Charts
 
+|Chart|Release|Docs|Values|Description|
+|-----|-------|----|------|-----------|
 |elastic-stack|[1.0.0](https://github.com/boeboe/istio-helm-charts/releases/tag/elastic-stack-1.0.0)|[doc](charts/istio-monitoring/elastic-stack/README.md)|[yaml](charts/istio-monitoring/elastic-stack/values.yaml)|Istio Monitoring with Elastic Search, Kibana, APM Server and Filebeat|
 |grafana-stack|[1.0.0](https://github.com/boeboe/istio-helm-charts/releases/tag/grafana-stack-1.0.0)|[doc](charts/istio-monitoring/grafana-stack/README.md)|[yaml](charts/istio-monitoring/grafana-stack/values.yaml)|Istio Monitoring with Kiali, Grafana, Prometheus and Jaeger|
 |kiali-stack|[1.0.0](https://github.com/boeboe/istio-helm-charts/releases/tag/kiali-stack-1.0.0)|[doc](charts/istio-monitoring/kiali-stack/README.md)|[yaml](charts/istio-monitoring/kiali-stack/values.yaml)|Istio Monitoring with Prometheus, Grafana, Tempo, Loki and FluentBit|

@@ -11,7 +11,7 @@ This Helm Chart contains the following components to monitor an Istio Cluster.
 
 
 |Component|Helm Repo|Version|
-|---------|--------|-------|
+|---------|---------|-------|
 |Prometheus|[prometheus-community](https://prometheus-community.github.io/helm-charts)|14.9.1|
 |Grafana|[grafana](https://grafana.github.io/helm-charts)|6.16.13|
 |Tempo|[tempo](https://grafana.github.io/helm-charts)|0.7.7|

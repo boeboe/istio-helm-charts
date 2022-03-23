@@ -11,7 +11,7 @@ This Helm Chart contains the following components to monitor an Istio Cluster.
 
 
 |Component|Helm Repo|Version|
-|---------|--------|-------|
+|---------|---------|-------|
 |Elasticsearch|[elasticsearch](https://helm.elastic.co)|7.15.0|
 |Kibana|[kibana](https://helm.elastic.co)|7.15.0|
 |APM Server|[apm-server](https://helm.elastic.co)|7.15.0|
